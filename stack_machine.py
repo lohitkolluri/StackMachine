@@ -85,30 +85,35 @@ class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.pack()
+        self.master.title('Stack Machine')
+        self.master.geometry('300x200') # Set window size
+        self.master.configure(bg='light grey') # Set background color
+        self.pack(padx=10, pady=10) # Add padding around widgets
         self.create_widgets()
         self.sm = StackMachine()
 
     def create_widgets(self):
         self.instruction_entry = tk.Entry(self)
-        self.instruction_entry.pack(side="top")
+        self.instruction_entry.pack(side="top", fill='x', padx=5, pady=5)
 
         self.execute_button = tk.Button(self)
         self.execute_button["text"] = "Execute"
         self.execute_button["command"] = self.execute_instruction
-        self.execute_button.pack(side="top")
+        self.execute_button["bg"] = "skyblue" # Set button color
+        self.execute_button.pack(side="top", fill='x', padx=5, pady=5)
 
         self.reset_button = tk.Button(self)
         self.reset_button["text"] = "Reset"
         self.reset_button["command"] = self.reset
-        self.reset_button.pack(side="top")
+        self.reset_button["bg"] = "skyblue" # Set button color
+        self.reset_button.pack(side="top", fill='x', padx=5, pady=5)
 
         self.stack_label = tk.Label(self, text="Stack: []")
-        self.stack_label.pack(side="top")
+        self.stack_label.pack(side="top", fill='x', padx=5, pady=5)
 
         self.quit = tk.Button(self, text="QUIT", fg="red",
                               command=self.master.destroy)
-        self.quit.pack(side="bottom")
+        self.quit.pack(side="bottom", fill='x', padx=5, pady=5)
 
     def execute_instruction(self):
         instruction = self.instruction_entry.get()
