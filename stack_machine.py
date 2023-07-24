@@ -64,6 +64,7 @@ class Application(tk.Frame):
         self.pack(padx=10, pady=10) # Add padding around widgets
         self.create_widgets()
         self.sm = StackMachine()
+        self.history = []
 
     def create_widgets(self):
         self.instruction_entry = tk.Entry(self)
@@ -95,6 +96,7 @@ class Application(tk.Frame):
         try:
             self.sm.execute(instruction)
             self.stack_label["text"] = f"Stack: {self.sm.stack}"
+            self.history.append(instruction)  # Store the executed instruction in history
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
@@ -131,6 +133,13 @@ class Application(tk.Frame):
         """
         messagebox.showinfo("Help", help_text)
 
+    def on_closing(self):
+        # Clear the history list when the window is closed
+        self.history = []
+        self.master.destroy()
+
 root = tk.Tk()
 app = Application(master=root)
+# Bind the window close event to the on_closing method of the root (Tk) object
+root.protocol("WM_DELETE_WINDOW", app.on_closing)
 app.mainloop()
