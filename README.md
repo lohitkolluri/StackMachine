@@ -1,68 +1,56 @@
-# Stack Machine in Python
+# Stack Machine Application
 
-This repository contains a simple implementation of a stack machine in Python. A stack machine is a type of computer processor design that relies on a stack to hold values, rather than a set of registers. This stack machine supports basic arithmetic operations, stack operations, and some advanced features.
+The Stack Machine Application is a simple graphical user interface (GUI) that simulates the behavior of a stack-based processor. It allows users to execute instructions and manipulate a stack.
+
+## Features
+
+- Push numeric values onto the stack.
+- Pop values from the top of the stack.
+- Perform basic arithmetic operations on stack values (addition, subtraction, multiplication, division).
+- Duplicate the top value on the stack.
+- Swap the positions of the top two values on the stack.
+- Reset the stack to its initial state.
+
+## Prerequisites
+
+- Python 3.x
+- tkinter (included with Python standard library)
+
+## How to Run
+
+1. Clone this repository to your local machine.
+
+2. Navigate to the repository directory.
+
+3. Run the application using the following command:
+
+```bash
+python stack_machine.py
+```
+
+4. The Stack Machine GUI window will appear.
 
 ## Usage
 
-Create an instance of the `StackMachine` class and call its `execute` method with each instruction in the program. Alternatively, load a list of instructions using the `load_program` method.
+1. Enter an instruction in the entry field and press Enter or click the "Execute" button to execute the instruction.
 
-Example:
+2. The current stack will be displayed below the buttons.
 
-```python
-sm = StackMachine()
-sm.load_program([
-    "PUSH 5",
-    "PUSH 3",
-    "DUP",
-    "ADD",
-    "SWAP",
-    "PRINT"  # Outputs: 5
-])
-```
+3. To clear the stack and start over, click the "Reset" button.
 
-In this example, the program pushes `5` and `3` onto the stack, duplicates the `3`, adds the duplicate `3` to the `3` already on the stack (resulting in `6`), swaps the `6` and the `5` (so `5` is on top), and then prints the top value of the stack, which is `5`.
+4. For more information about the available commands and usage, click the "Help" button.
 
-## Instructions
+## Command Instructions
 
-The following instructions are supported:
+- **PUSH <value>:** Pushes the specified numeric value onto the stack.
+- **POP:** Removes the topmost value from the stack.
+- **ADD:** Pops the top two values from the stack, adds them, and pushes the result onto the stack.
+- **SUB:** Pops the top two values from the stack, subtracts the second from the first, and pushes the result onto the stack.
+- **MUL:** Pops the top two values from the stack, multiplies them, and pushes the result onto the stack.
+- **DIV:** Pops the top two values from the stack, divides the first by the second, and pushes the result onto the stack.
+- **DUP:** Duplicates the top value on the stack and pushes the duplicate.
+- **SWAP:** Swaps the positions of the top two values on the stack.
 
-- `PUSH <n>`: Pushes the number `<n>` onto the stack.
-- `POP`: Removes the top value from the stack and discards it.
-- `DUP`: Duplicates the top value on the stack.
-- `SWAP`: Swaps the top two values on the stack.
-- `ADD`: Removes the top two values from the stack, adds them together, and pushes the result back onto the stack.
-- `SUB`: Removes the top two values from the stack, subtracts the second one from the first, and pushes the result back onto the stack.
-- `MUL`: Removes the top two values from the stack, multiplies them together, and pushes the result back onto the stack.
-- `DIV`: Removes the top two values from the stack, divides the second one by the first (throwing an error if the first is zero), and pushes the result back onto the stack.
-- `PRINT`: Prints the top value on the stack.
+## History
 
-## Loading a Program
-
-A program can be loaded as a list of instructions using the `load_program` method of the `StackMachine` class. Each instruction in the list should be a string.
-
-Example:
-
-```python
-program = [
-    "PUSH 5",
-    "PUSH 3",
-    "DUP",
-    "ADD",
-    "SWAP",
-    "PRINT"
-]
-sm = StackMachine()
-sm.load_program(program)
-```
-
-This will execute the program in the same way as the earlier example.
-
-## Testing
-
-A simple test program is included in the `stack_machine.py` file. This program demonstrates basic usage of the stack machine.
-
-To run the test program, execute the `stack_machine.py` file using a Python interpreter.
-
-## Requirements
-
-Python 3.6 or higher is required to run this program.
+The application stores the history of executed instructions during the session. The history is cleared when the application is closed.
