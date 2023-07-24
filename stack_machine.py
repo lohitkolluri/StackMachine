@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import messagebox
+
 class StackMachine:
     def __init__(self):
         self.stack = []
@@ -53,11 +56,6 @@ class StackMachine:
             raise RuntimeError("Attempted to divide by zero")
         self.stack.append(b / a)
 
-    def print(self):
-        if not self.stack:
-            raise RuntimeError("Attempted to print an empty stack")
-        print(self.stack[-1])
-
     def execute(self, instruction):
         if instruction == "DUP":
             self.dup()
@@ -71,8 +69,6 @@ class StackMachine:
             self.multiply()
         elif instruction == "DIV":
             self.divide()
-        elif instruction == "PRINT":
-            self.print()
         elif instruction.startswith("PUSH"):
             _, num = instruction.split()
             self.push(int(num))
@@ -85,16 +81,48 @@ class StackMachine:
         for instruction in program:
             self.execute(instruction)
 
+class Application(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.create_widgets()
+        self.sm = StackMachine()
 
-def test_program():
-    sm = StackMachine()
-    sm.load_program([
-        "PUSH 5",
-        "PUSH 3",
-        "DUP",
-        "ADD",
-        "SWAP",
-        "PRINT"  # Should print 5
-    ])
+    def create_widgets(self):
+        self.instruction_entry = tk.Entry(self)
+        self.instruction_entry.pack(side="top")
 
-test_program()
+        self.execute_button = tk.Button(self)
+        self.execute_button["text"] = "Execute"
+        self.execute_button["command"] = self.execute_instruction
+        self.execute_button.pack(side="top")
+
+        self.reset_button = tk.Button(self)
+        self.reset_button["text"] = "Reset"
+        self.reset_button["command"] = self.reset
+        self.reset_button.pack(side="top")
+
+        self.stack_label = tk.Label(self, text="Stack: []")
+        self.stack_label.pack(side="top")
+
+        self.quit = tk.Button(self, text="QUIT", fg="red",
+                              command=self.master.destroy)
+        self.quit.pack(side="bottom")
+
+    def execute_instruction(self):
+        instruction = self.instruction_entry.get()
+        try:
+            self.sm.execute(instruction)
+            self.stack_label["text"] = f"Stack: {self.sm.stack}"
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    def reset(self):
+        self.sm = StackMachine()  # Reset the StackMachine
+        self.instruction_entry.delete(0, 'end')  # Clear the instruction entry field
+        self.stack_label["text"] = "Stack: []"  # Reset the stack label
+
+root = tk.Tk()
+app = Application(master=root)
+app.mainloop()
