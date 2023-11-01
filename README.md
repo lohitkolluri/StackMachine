@@ -1,56 +1,52 @@
-# Stack Machine Application
+# Arduino Stack Machine Simulator
 
-The Stack Machine Application is a simple graphical user interface (GUI) that simulates the behavior of a stack-based processor. It allows users to execute instructions and manipulate a stack.
+A simple Arduino sketch that simulates a stack machine, allowing you to execute stack-based operations via serial communication.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Examples](#examples)
+
+
+## Introduction
+
+This Arduino sketch provides a basic stack machine simulator, allowing you to push and pop values from a stack and perform arithmetic operations (addition, multiplication, and division) using simple commands. It's designed for educational purposes and can be used as a starting point for learning about stack-based systems and basic arithmetic operations.
 
 ## Features
 
-- Push numeric values onto the stack.
-- Pop values from the top of the stack.
-- Perform basic arithmetic operations on stack values (addition, subtraction, multiplication, division).
-- Duplicate the top value on the stack.
-- Swap the positions of the top two values on the stack.
-- Reset the stack to its initial state.
+- Push values onto the stack.
+- Pop values from the stack.
+- Perform addition, multiplication, and division operations.
+- Error handling for stack underflow and division by zero.
+- Interaction via the Arduino Serial Monitor.
 
-## Prerequisites
+## Requirements
 
-- Python 3.x
-- tkinter (included with Python standard library)
-
-## How to Run
-
-1. Clone this repository to your local machine.
-
-2. Navigate to the repository directory.
-
-3. Run the application using the following command:
-
-```bash
-python stack_machine.py
-```
-
-4. The Stack Machine GUI window will appear.
+- Arduino board (e.g., Arduino Uno)
+- Arduino IDE or online IDE (e.g., Tinkercad for simulation)
+- Serial communication tool (e.g., Arduino Serial Monitor, Tinkercad's Serial Monitor)
 
 ## Usage
 
-1. Enter an instruction in the entry field and press Enter or click the "Execute" button to execute the instruction.
+1. Upload the provided Arduino sketch to your Arduino board using the Arduino IDE or compatible online platforms.
+2. Open the Arduino Serial Monitor or use a serial communication tool if you're using Tinkercad.
+3. Enter instructions in the Serial Monitor to interact with the stack machine. Supported commands include:
+   - `PUSH <value>`: Push a floating-point value onto the stack.
+   - `POP`: Pop the top value from the stack.
+   - `ADD`: Perform addition on the top two stack values.
+   - `MUL`: Perform multiplication on the top two stack values.
+   - `DIV`: Perform division on the top two stack values (avoiding division by zero).
+4. Observe the stack's current state and any operation results in the Serial Monitor.
 
-2. The current stack will be displayed below the buttons.
+## Examples
 
-3. To clear the stack and start over, click the "Reset" button.
+Here are some example instructions you can enter in the Serial Monitor:
 
-4. For more information about the available commands and usage, click the "Help" button.
-
-## Command Instructions
-
-- **PUSH <value>:** Pushes the specified numeric value onto the stack.
-- **POP:** Removes the topmost value from the stack.
-- **ADD:** Pops the top two values from the stack, adds them, and pushes the result onto the stack.
-- **SUB:** Pops the top two values from the stack, subtracts the second from the first, and pushes the result onto the stack.
-- **MUL:** Pops the top two values from the stack, multiplies them, and pushes the result onto the stack.
-- **DIV:** Pops the top two values from the stack, divides the first by the second, and pushes the result onto the stack.
-- **DUP:** Duplicates the top value on the stack and pushes the duplicate.
-- **SWAP:** Swaps the positions of the top two values on the stack.
-
-## History
-
-The application stores the history of executed instructions during the session. The history is cleared when the application is closed.
+- `PUSH 42`: Push the value 42 onto the stack.
+- `PUSH 10`: Push the value 10 onto the stack.
+- `ADD`: Perform addition on the top two stack values.
+- `MUL`: Perform multiplication on the top two stack values.
+- `DIV`: Perform division on the top two stack values.
