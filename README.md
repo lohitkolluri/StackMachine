@@ -10,7 +10,6 @@ A simple Arduino sketch that simulates a stack machine, allowing you to execute 
 - [Usage](#usage)
 - [Examples](#examples)
 
-
 ## Introduction
 
 This Arduino sketch provides a basic stack machine simulator, allowing you to push and pop values from a stack and perform arithmetic operations (addition, multiplication, and division) using simple commands. It's designed for educational purposes and can be used as a starting point for learning about stack-based systems and basic arithmetic operations.
@@ -25,21 +24,30 @@ This Arduino sketch provides a basic stack machine simulator, allowing you to pu
 
 ## Requirements
 
+To use the Arduino Stack Machine Simulator, you will need the following:
+
 - Arduino board (e.g., Arduino Uno)
 - Arduino IDE or online IDE (e.g., Tinkercad for simulation)
 - Serial communication tool (e.g., Arduino Serial Monitor, Tinkercad's Serial Monitor)
 
 ## Usage
 
-1. Upload the provided Arduino sketch to your Arduino board using the Arduino IDE or compatible online platforms.
-2. Open the Arduino Serial Monitor or use a serial communication tool if you're using Tinkercad.
-3. Enter instructions in the Serial Monitor to interact with the stack machine. Supported commands include:
-   - `PUSH <value>`: Push a floating-point value onto the stack.
-   - `POP`: Pop the top value from the stack.
-   - `ADD`: Perform addition on the top two stack values.
-   - `MUL`: Perform multiplication on the top two stack values.
-   - `DIV`: Perform division on the top two stack values (avoiding division by zero).
-4. Observe the stack's current state and any operation results in the Serial Monitor.
+1. **Upload the provided Arduino sketch:**
+   - Use the Arduino IDE or compatible online platforms to upload the sketch to your Arduino board.
+
+2. **Open the Arduino Serial Monitor:**
+   - Navigate to Tools -> Serial Monitor in the Arduino IDE or use a serial communication tool if you're using Tinkercad.
+
+3. **Enter instructions in the Serial Monitor:**
+   - Supported commands include:
+     - `PUSH <value>`: Push a floating-point value onto the stack.
+     - `POP`: Pop the top value from the stack.
+     - `ADD`: Perform addition on the top two stack values.
+     - `MUL`: Perform multiplication on the top two stack values.
+     - `DIV`: Perform division on the top two stack values (avoiding division by zero).
+
+4. **Observe the stack's current state and operation results:**
+   - View the Serial Monitor for real-time feedback on the stack's state and any operation results.
 
 ## Examples
 
